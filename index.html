@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anh Thai | Data & Research Portfolio</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --card: #020617;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #bfdbfe, #3b82f6 40%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #e5e7eb;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text span:last-child {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #22c55e);
+      transition: width 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 28px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .hero-main {
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%),
+                  linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.6));
+      border-radius: var(--radius-xl);
+      padding: 22px 22px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3vw, 32px);
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-pill {
+      font-size: 11px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #3b82f6, #22c55e);
+      border: none;
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 14px 40px rgba(37, 99, 235, 0.55);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 50px rgba(37, 99, 235, 0.7);
+    }
+
+    .btn-ghost {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-muted);
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(30, 64, 175, 0.35);
+      padding-top: 12px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #3b82f6;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.6));
+      padding: 12px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-card h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 20px;
+    }
+
+    section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.24), transparent 60%),
+                  linear-gradient(155deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.78));
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card + .card {
+      margin-top: 10px;
+    }
+
+    .about-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-text p + p {
+      margin-top: 8px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .project {
+      font-size: 12px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-weight: 500;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(59, 130, 246, 0.5);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .timeline-item + .timeline-item {
+      margin-top: 10px;
+    }
+
+    .timeline-bullet {
+      margin-top: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+    }
+
+    .timeline-main {
+      flex: 1;
+    }
+
+    .timeline-title {
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .timeline-org {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-points {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .timeline-points li {
+      margin-bottom: 2px;
+    }
+
+    .sidebar-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 10px 12px 10px;
+      font-size: 12px;
+    }
+
+    .sidebar-card h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .contact-row a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    footer {
+      margin-top: 26px;
+      border-top: 1px solid rgba(30, 64, 175, 0.4);
+      padding-top: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding-inline: 14px;
+      }
+
+      .hero-main {
+        padding: 18px 15px 14px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">A</div>
+        <div class="logo-text">
+          <span>Anh Thai</span>
+          <span>Data & Market Research</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>Open to Data / Research roles (Remote & Vietnam)</span>
+        </div>
+        <h1 class="hero-title" id="hero-title">Data Analyst & Market Researcher</h1>
+        <p class="hero-subtitle">
+          I transform messy data into clear stories for business and product decisions. I enjoy combining quantitative analysis,
+          research, and visualization to answer practical questions for stakeholders.
+        </p>
+        <div class="hero-highlights">
+          <span class="hero-pill">SQL · Python · R · Power BI · Tableau</span>
+          <span class="hero-pill">Market research & financial modelling</span>
+          <span class="hero-pill">Academic research & survey design</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View projects ↓</a>
+          <a href="#contact" class="btn-ghost">Download CV / Contact</a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="hero-meta-dot"></span> Based in Ho Chi Minh City, Vietnam</span>
+          <span>🎓 Economics student – UEL (grad. 2025)</span>
+          <span>📊 Market research & strategy experience</span>
+        </div>
+      </div>
+      <div class="hero-side" aria-label="Quick facts">
+        <div class="hero-card">
+          <h3>Portfolio snapshot</h3>
+          <p>Selected projects demonstrating analytics, research, and business thinking.</p>
+          <div class="badge-row">
+            <span class="badge">Health-insurance EDA & prediction</span>
+            <span class="badge">Customer experience dashboard</span>
+            <span class="badge">Financial literacy SEM research</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>What I like working on</h3>
+          <p>Breaking down questions, building clean datasets, and turning results into simple visuals and stories for non-technical audiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <div>
+        <section id="about">
+          <h2 class="section-title">About</h2>
+          <div class="card">
+            <div class="about-text">
+              <p>
+                I am an Economics student at the University of Economics and Law (UEL) with hands-on experience in data analysis and
+                market research. I have worked on projects for both academic research and real businesses, from building dashboards and
+                financial models to designing questionnaires and summarizing insights for decision makers.
+              </p>
+              <p>
+                My current focus is on roles where I can combine data skills (SQL, Python, R, Power BI/Tableau) with business thinking to
+                support product, marketing, and strategy teams.
+              </p>
+            </div>
+            <div class="chips">
+              <span class="chip">Data analytics & visualization</span>
+              <span class="chip">Market & consumer research</span>
+              <span class="chip">Survey design & analysis</span>
+              <span class="chip">Academic research (CFA / SEM)</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <h2 class="section-title">Selected Projects</h2>
+          <div class="grid-2">
+            <div class="card project">
+              <div class="project-header">
+                <span class="project-title">Health Insurance EDA & Prediction</span>
+                <span class="project-meta">Python · Kaggle</span>
+              </div>
+              <p class="project-desc">
+                Explored factors influencing health insurance charges, cleaned and validated the dataset, visualized patterns by age,
+                BMI, region, and smoking status, and trained baseline models to predict costs.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">pandas / numpy</span>
+                <span class="project-tag">EDA & visualizations</span>
+                <span class="project-tag">Regression models</span>
+              </div>
+            </div>
+
+            <div class="card project">
+              <div class="project-header">
+                <span class="project-title">Customer Experience Dashboard</span>
+                <span class="project-meta">Power BI</span>
+              </div>
+              <p class="project-desc">
+                Built a dashboard for a restaurant survey (N ≈ 200+), tracking NPS, satisfaction by touchpoint, and key drivers of
+                loyalty. Highlighted quick wins vs. long-term improvements for the management team.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Data modelling</span>
+                <span class="project-tag">DAX measures</span>
+                <span class="project-tag">Storytelling with data</span>
+              </div>
+            </div>
+
+            <div class="card project">
+              <div class="project-header">
+                <span class="project-title">Financial Literacy of Economics Students</span>
+                <span class="project-meta">R · Academic research</span>
+              </div>
+              <p class="project-desc">
+                Co-led a large-scale study on financial socialization & literacy among university students. Performed data cleaning,
+                scale validation (CFA), and structural equation modelling to test research hypotheses.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">CFA / SEM</span>
+                <span class="project-tag">Survey data</span>
+                <span class="project-tag">Academic writing</span>
+              </div>
+            </div>
+
+            <div class="card project">
+              <div class="project-header">
+                <span class="project-title">Tequila Market Entry & Pricing</span>
+                <span class="project-meta">Excel · Market research</span>
+              </div>
+              <p class="project-desc">
+                Supported a US-based venture studio with market sizing, landed-cost models, and competitor pricing benchmarks for
+                launching tequila/RTD products in Asian markets.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Market sizing</span>
+                <span class="project-tag">Financial modelling</span>
+                <span class="project-tag">Competitive analysis</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience">
+          <h2 class="section-title">Experience</h2>
+          <div class="card">
+            <div class="timeline-item">
+              <div class="timeline-bullet"></div>
+              <div class="timeline-main">
+                <div class="timeline-title">Market Research Analyst (Remote)</div>
+                <div class="timeline-org">Twentyzeronine Ventures LLC · San Francisco (remote)</div>
+                <div class="timeline-meta">Dec 2024 – Present</div>
+                <ul class="timeline-points">
+                  <li>Analyze markets and competitors for tequila & RTD products across multiple Asian countries.</li>
+                  <li>Build landed-cost and profitability models in Excel/Sheets to support pricing & distribution strategy.</li>
+                  <li>Synthesize findings into concise slides and memos for founders and investors.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-bullet"></div>
+              <div class="timeline-main">
+                <div class="timeline-title">Data & Research Intern</div>
+                <div class="timeline-org">Happer Container Vietnam</div>
+                <div class="timeline-meta">2024 · Internship</div>
+                <ul class="timeline-points">
+                  <li>Supported analysis of container logistics operations and service quality for clients.</li>
+                  <li>Created dashboards and reports summarizing KPIs such as responsiveness and reliability.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-bullet"></div>
+              <div class="timeline-main">
+                <div class="timeline-title">Research Assistant & Student Projects</div>
+                <div class="timeline-org">University of Economics and Law (UEL)</div>
+                <div class="timeline-meta">2023 – Present</div>
+                <ul class="timeline-points">
+                  <li>Lead and support quantitative research projects using R, Python, and statistical techniques.</li>
+                  <li>Present findings in academic competitions and internal seminars.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section id="skills">
+          <h2 class="section-title">Skills</h2>
+          <div class="sidebar-card">
+            <h3>Data & Analytics</h3>
+            <div class="skill-list">
+              <span class="skill">SQL (BigQuery / PostgreSQL / MySQL)</span>
+              <span class="skill">Python (pandas, numpy, matplotlib)</span>
+              <span class="skill">R (tidyverse, ggplot2)</span>
+              <span class="skill">Power BI / DAX</span>
+              <span class="skill">Tableau</span>
+              <span class="skill">Excel (advanced)</span>
+            </div>
+          </div>
+          <div class="sidebar-card" style="margin-top:10px;">
+            <h3>Research & Business</h3>
+            <div class="skill-list">
+              <span class="skill">Market & competitor research</span>
+              <span class="skill">Survey design & analysis</span>
+              <span class="skill">Financial & cost models</span>
+              <span class="skill">Report writing & presentations</span>
+              <span class="skill">Stakeholder communication</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="education">
+          <h2 class="section-title">Education</h2>
+          <div class="sidebar-card">
+            <h3>Bachelor of Economics</h3>
+            <p class="project-meta">University of Economics and Law (UEL), Vietnam</p>
+            <p class="project-meta">Expected graduation: 2025</p>
+            <p class="project-desc" style="margin-top:6px;">
+              Focus on economics, data analysis, and quantitative research. Active in research projects and competitions.
+            </p>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2 class="section-title">Contact</h2>
+          <div class="sidebar-card">
+            <div class="contact-row">
+              <span>📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a></span>
+              <span>🔗 LinkedIn: <a href="#">linkedin.com/in/your-profile</a></span>
+              <span>📂 GitHub / Portfolio links can go here</span>
+            </div>
+            <p style="margin-top:8px; font-size:11px; color:var(--text-muted);">
+              Replace the placeholders above with your real links. You can also link a PDF version of your CV here.
+            </p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Anh Thai. All rights reserved.</span>
+      <span>Built with HTML & CSS · Simple one-page portfolio.</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
